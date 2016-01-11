@@ -26,8 +26,9 @@ I really hope you like it and feel free to use this theme for whatever purpose y
 * SCSS source files for further modifications.
 
 ### PeterCxy's Modifications
-* Switch to Disqus for the default comment system (edit partials/disqus.hbs and change the `example` to your own Disqus short name before deploying)
+* Switch to Disqus for the default comment system (__IMPORTANT__: edit partials/disqus.hbs and change the `example` to your own Disqus short name before deploying)
 * Bringup to the new Navigation system of Ghost
+* Introduce code highlight with `Prism.js`
 * Allow loading fonts via HTTPS
 
 ### Installation
