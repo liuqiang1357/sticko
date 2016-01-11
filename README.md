@@ -1,6 +1,6 @@
 Sticko - A free Ghost theme :)
 =======
-
+This version is modified by @PeterCxy. Below is the original README.
 
 ![screen](http://damianmuti.com/downloads/screen.jpg)
 
@@ -24,6 +24,11 @@ I really hope you like it and feel free to use this theme for whatever purpose y
 * Loading indicator.
 * Icon fonts - support for Retina Display/High pixel density screens.
 * SCSS source files for further modifications.
+
+### PeterCxy's Modifications
+* Switch to Disqus for the default comment system (edit partials/disqus.hbs and change the `example` to your own Disqus short name before deploying)
+* Bringup to the new Navigation system of Ghost
+* Allow loading fonts via HTTPS
 
 ### Installation
 
