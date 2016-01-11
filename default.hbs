@@ -14,6 +14,7 @@
 
     {{! Styles'n'Scripts }}
     <link rel="stylesheet" href="{{asset "/css/style.css"}}">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css">
 
     {{! Touch icons and favicon }}
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset "/images/apple-touch-icon-144x144-precomposed.png"}}" />
@@ -42,12 +43,21 @@
 {{! Ghost outputs important scripts and data with this tag }}
 {{ghost_foot}}
 
+<script src="//cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
 <script src="{{asset "/js/plugins/jquery.fitvids.js"}}"></script>
 <script src="{{asset "/js/script.js"}}"></script>
-{{#if post}}
-    <script async type="text/javascript" src="//apis.google.com/js/plusone.js?callback=gpcb"></script>
-{{/if}}
+<script type="text/javascript">
+    {{> disqus}}
+    var disqus_identifier = '{{post.id}}';
+ 
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
 </body>
 </html>
