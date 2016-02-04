@@ -46,27 +46,29 @@ $(document).ready(function(){
 
   function renderPage(res, href) {
     var args = arguments;
-    $('#main').fadeOut(function() {
-      $('#main').html($(res).find('#main').html()).fadeIn(function() {
-        // Re-run Prism.js
-        Prism.highlightAll();
+    $("html, body").animate({ scrollTop: 0 }, "fast", "swing", function() {
+      $('#main').fadeOut(function() {
+        $('#main').html($(res).find('#main').html()).fadeIn(function() {
+          // Re-run Prism.js
+          Prism.highlightAll();
+        });
+        $('#main-sidebar').css('background', $(res).find('#main-sidebar').css('background'));
+        $('.spinner').hide();
+
+        if ($('#disqus_thread') != null) {
+          disqus_identifier = $(res).filter('meta[name=postId]').attr('content');
+          reloadDisqus();
+        }
+
+        var title = $(res).filter('title').text();
+        $(document).prop('title', title);
+
+        if (args.length == 2) {
+          window.history.pushState(res, "", href);
+        }
+
+        init(false);
       });
-      $('#main-sidebar').css('background', $(res).find('#main-sidebar').css('background'));
-      $('.spinner').hide();
-
-      if ($('#disqus_thread') != null) {
-        disqus_identifier = $(res).filter('meta[name=postId]').attr('content');
-        reloadDisqus();
-      }
-
-      var title = $(res).filter('title').text();
-      $(document).prop('title', title);
-
-      if (args.length == 2) {
-        window.history.pushState(res, "", href);
-      }
-
-      init(false);
     });
   }
 
