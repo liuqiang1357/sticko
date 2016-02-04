@@ -20,14 +20,6 @@ $(document).ready(function(){
 		$(this).attr('target', '_blank');
 	})
 
-    /* Since Ghost does not support a post featured image yet, make an specific image the featured one. Thanks to Thomas Cullen (@ThomasCullen92) for this workaround. */
-	mainImage = $('img[alt="cover-image"]');
-    if ( mainImage.length > 0){
-        mainImageSource = mainImage.attr('src');
-        $('#main-sidebar').css('background', 'url('+mainImageSource+')');
-        mainImage.remove();
-    }
-
   window.history.pushState($('html')[0].outerHTML, "", window.location.href);
 
   // Register onClick event
@@ -59,6 +51,7 @@ $(document).ready(function(){
         // Re-run Prism.js
         Prism.highlightAll();
       });
+      $('#main-sidebar').css('background', $(res).find('#main-sidebar').css('background'));
       $('.spinner').hide();
 
       if ($('#disqus_thread') != null) {

@@ -1,17 +1,16 @@
 /**
- * 
+ *
  * Sidebar/Nav structure.
- * 
+ *
 **/
 
 #main-sidebar {
 	height:100%; position:fixed; text-align:center; color:$text-color-bright;
 	//@include background(linear-gradient(rgba(221, 75, 56, 0.75), rgba(221, 75, 56, 0.75)), url(../images/sidebar_bg.jpg) top right no-repeat);
 	@include background-size(cover !important);
-	background-image: url(../images/sidebar_bg.jpg);
 
 	a {text-decoration:none}
-	
+
 	/* Orange tinted cover over the featured image */
 	&:before {background-color:rgba(221, 75, 56, .75); content:""; display:block; position: absolute; top: 0; bottom: 0; left: 0; right: 0;}
 }
