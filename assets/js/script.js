@@ -46,7 +46,7 @@ $(document).ready(function(){
 
   function renderPage(res, href) {
     var args = arguments;
-    $("html, body").animate({ scrollTop: 0 }, "fast", "swing", function() {
+    $("html body").animate({ scrollTop: 0 }, "fast", "swing", function() {
       $('#main').fadeOut(function() {
         $('#main').html($(res).find('#main').html()).fadeIn(function() {
           // Re-run Prism.js
