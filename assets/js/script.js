@@ -26,7 +26,7 @@ $(document).ready(function(){
   function init(all) {
     var listener = function(e) {
       var href = $(this).attr('href');
-      if (href.startsWith(window.location.protocol + "//" + window.location.host) ||
+      if ((href.startsWith(window.location.protocol + "//" + window.location.host) && (href.indexOf('/rss/') < 0)) ||
         (!href.startsWith('http://') && !href.startsWith('https://'))) {
 
         e.preventDefault();
