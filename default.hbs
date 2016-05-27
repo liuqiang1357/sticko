@@ -7,9 +7,6 @@
     {{! Page Meta }}
     <title>{{meta_title}}</title>
     <meta name="description" content="{{meta_description}}">
-    {{#if post}}
-    <meta name="postId" content="{{post.id}}">
-    {{/if}}
 
     <meta name="HandheldFriendly" content="True" />
     <meta name="MobileOptimized" content="320" />
@@ -17,7 +14,7 @@
 
     {{! Styles'n'Scripts }}
     <link rel="stylesheet" href="{{asset "/css/style.css"}}">
-    <link rel="stylesheet" href="{{asset "/css/prism.css"}}">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css">
 
     {{! Touch icons and favicon }}
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset "/images/apple-touch-icon-144x144-precomposed.png"}}" />
@@ -35,22 +32,10 @@
 </head>
 <body class="{{body_class}}">
 <div id="main-content" role="main" class="pure-g-r">
-    <aside id="main-sidebar" class="pure-u-1-3"
-{{#if post}}
-  {{#post}}
-    {{#if image}}
-      style="background:url({{image}})"
-    {{else}}
-      style="background:url({{@blog.cover}})"
-    {{/if}}
-  {{/post}}
-{{else}}
-  style="background:url({{@blog.cover}})"
-{{/if}}
-    >
+    <aside id="main-sidebar" class="pure-u-1-2" style="background-image:url({{@blog.cover}})">
         {{> aside}}
     </aside>
-    <section id="main" class="pure-u-2-3">
+    <section id="main" class="pure-u-1-2">
         {{{body}}}
     </section>
 </div>
@@ -58,23 +43,23 @@
 {{! Ghost outputs important scripts and data with this tag }}
 {{ghost_foot}}
 
-<script src="{{asset "/js/prism.js"}}"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
 <script src="{{asset "/js/plugins/jquery.fitvids.js"}}"></script>
 <script src="{{asset "/js/script.js"}}"></script>
+{{#if post}}
 <script type="text/javascript">
     {{> disqus}}
     var disqus_identifier = '{{post.id}}';
-
-    {{#if post}}
-    reloadDisqus();
-    {{/if}}
-    function reloadDisqus() {
+ 
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }
+    })();
 </script>
+{{/if}}
 </body>
 </html>
